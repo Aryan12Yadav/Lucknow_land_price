@@ -1,0 +1,65 @@
+STEP 1 → Setup + requirements
+STEP 2 → MongoDB (memory)
+STEP 3 → FAISS + embeddings (LangChain style)
+STEP 4 → CSV → documents
+STEP 5 → Retriever
+STEP 6 → LLM (DeepSeek via NVIDIA)
+STEP 7 → Combine (RAG chain)
+STEP 8 → FastAPI endpoint
+STEP 9 → Memory integration
+
+
+pip install fastapi uvicorn pandas pymongo python-dotenv
+pip install sentence-transformers faiss-cpu
+pip install langchain langchain-community
+pip install openai
+
+
+
+User Query
+   ↓
+MongoDB → last chats
+   ↓
+Memory text
+   ↓
+FAISS (LangChain)
+   ↓
+Context docs
+   ↓
+LLM (DeepSeek)
+   ↓
+Response
+   ↓
+Save to 
+
+
+
+
+
+
+
+CSV → Documents → Embeddings → FAISS Index → Retriever → Search Results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

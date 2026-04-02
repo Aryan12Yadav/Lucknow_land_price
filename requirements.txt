@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pymongo
+python-dotenv
+boto3
+faiss-cpu
+sentence-transformers
+langchain
+langchain-community
+langchain-text-splitters
+pypdf
+openai
