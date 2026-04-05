@@ -3,14 +3,16 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+embedding_model = HuggingFaceEmbeddings(
+            model_name="all-MiniLM-L6-v2"
+        )
+
 class RAGService:
 
     def __init__(self):
 
-        self.embedding = HuggingFaceEmbeddings(
-            model_name="all-MiniLM-L6-v2"
-        )
-
+       
+        self.embedding = embedding_model
         self.vectorstore = None
         self.retriever = None
 

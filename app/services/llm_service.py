@@ -30,8 +30,8 @@ User Query:
 
 Rules:
 - Sirf context ke basis par answer do
-- Apni taraf se kuch isse related this add kr skte ho pr pe preciouse 
-- not try to make inovative answer
+- Apni taraf se kuch isse related this add kr skte ho pr pe precisely
+- try to make inovative answer
 - use small amount of reasoning ability
 - Agar exact data na mile toh bolo "data available nahi hai"
 - Hinglish me simple answer do
@@ -54,7 +54,7 @@ Nearby areas ke rates:
             completion = self.client.chat.completions.create(
                 model="deepseek-ai/deepseek-v3.2",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0.2,
+                temperature=0.5,
                 max_tokens=300
             )
 
