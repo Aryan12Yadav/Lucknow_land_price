@@ -7,7 +7,6 @@ from app.config import settings
 from typing import List
 
 
-# Custom Embedding Class
 class NvidiaEmbeddings(Embeddings):
 
     def __init__(self):
@@ -18,7 +17,6 @@ class NvidiaEmbeddings(Embeddings):
         self.model = "nvidia/nv-embedqa-e5-v5"
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        # Plain strings directly bhejo - no tokenization
         embeddings = []
         for text in texts:
             text = text.replace("\n", " ").strip()

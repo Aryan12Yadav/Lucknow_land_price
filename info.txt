@@ -42,7 +42,17 @@ CSV → Documents → Embeddings → FAISS Index → Retriever → Search Result
 
 
 
+Local pehli baar:
+local nahi -> S3 nahi -> PDF download -> Build -> Local save -> S3 upload
 
+Local doosri baar:
+local hai -> Direct load
+
+Render pehli baar:
+local nahi -> S3 nahi -> PDF download -> Build -> Local save -> S3 upload
+
+Render restart ke baad:
+local nahi -> S3 pe hai -> S3 se download -> Load
 
 
 
