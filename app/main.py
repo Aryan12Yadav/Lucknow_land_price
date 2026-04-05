@@ -9,32 +9,20 @@ app = FastAPI()
 
 @app.on_event("startup")
 def startup_event():
-
     print("Starting server...")
 
     if os.path.exists("faiss_index"):
-        print("Loading FAISS index...")
+        print("FAISS index found - loading...")
         rag_service.load_vectorstore("faiss_index")
-
+        print("FAISS index loaded successfully")
     else:
-        print("Downloading PDF from S3...")
+        print("No FAISS index found - downloading PDF from S3...")
         pdf_path = s3_service.download_pdf()
 
         print("Building FAISS index...")
         rag_service.build_vectorstore(pdf_path)
-
         rag_service.save_vectorstore("faiss_index")
+        print("FAISS index created and saved successfully")
 
-        print("FAISS index created successfully")
-
-# @app.on_event("startup")
-# def startup_event():
-
-#     print("Starting server...")
-
-#     print("Listing S3 files...")
-#     s3_service.debug_list_files()
-
-#     exit()  # TEMP stop here
 
 app.include_router(chatbot_router)

@@ -11,11 +11,8 @@ class LLMService:
         )
 
     def generate_response(self, query: str, context_docs: list, memory_text: str):
-
-        # -------- LIMIT CONTEXT --------
         context = "\n".join(context_docs[:2])
 
-        # -------- PROMPT --------
         prompt = f"""
 Tum ek simple aur strict property assistant ho.
 
@@ -30,9 +27,9 @@ User Query:
 
 Rules:
 - Sirf context ke basis par answer do
-- Apni taraf se kuch isse related this add kr skte ho pr pe precisely
-- try to make inovative answer
-- use small amount of reasoning ability
+- Apni taraf se kuch isse related add kr skte ho pr precisely
+- Try to make innovative answer
+- Use small amount of reasoning ability
 - Agar exact data na mile toh bolo "data available nahi hai"
 - Hinglish me simple answer do
 - No markdown, no bullet points
@@ -40,27 +37,23 @@ Rules:
 Format:
 
 Agar data mil jaye:
-→ "<location> me shop rate ₹X per sqm hai..."
+→ "<location> me shop rate Rs X per sqm hai..."
 
 Agar data na mile:
 → "<location> ka data available nahi hai.
-
 Nearby areas ke rates:
-
 <list from context>"
 """
 
         try:
             completion = self.client.chat.completions.create(
-                model="deepseek-ai/deepseek-v3.2",
+                model="deepseek-ai/deepseek-v3-0324",
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.5,
                 max_tokens=300
             )
 
             response = completion.choices[0].message.content
-
-            # -------- CLEAN OUTPUT --------
             response = response.strip()
             response = response.replace("**", "").replace("*", "")
 
@@ -69,6 +62,5 @@ Nearby areas ke rates:
         except Exception as e:
             return f"Error: {str(e)}"
 
-        
-# singleton
+
 llm_service = LLMService()
